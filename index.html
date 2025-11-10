@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMK Pintar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Header & Navigation */
+      header {
+        background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        font-weight: 500;
+      }
+
+      nav a:hover {
+        opacity: 0.8;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+        color: white;
+        padding: 120px 2rem 80px;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        animation: fadeInUp 1.2s ease;
+      }
+
+      .btn {
+        display: inline-block;
+        background: white;
+        color: #6b46c1;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeInUp 1.4s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Sections */
+      section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        margin-top: 3%;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #6b46c1;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-image {
+        background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);
+        height: 400px;
+        border-radius: 15px;
+        display: flex;
+        /* align-items: center;
+        justify-content: center;*/
+        color: #6b46c1;
+        overflow: hidden;
+      }
+      .about-image img {
+        object-fit: cover;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+        color: #555;
+        text-align: justify;
+      }
+
+      /* Programs Section */
+      .programs {
+        background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+      }
+
+      .program-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .program-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 2px solid #e9d5ff;
+      }
+
+      .program-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(107, 70, 193, 0.2);
+      }
+
+      .program-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto 1.5rem;
+      }
+
+      .program-card h3 {
+        color: #6b46c1;
+        margin-bottom: 1rem;
+      }
+
+      .program-card p {
+        color: #666;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 10px;
+        border-left: 4px solid #6b46c1;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 1rem;
+        border: 2px solid #e9d5ff;
+        border-radius: 10px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #6b46c1;
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(107, 70, 193, 0.3);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: smaller;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .about-content,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <span>SMK Pintar</span>
+        </div>
+        <ul>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#programs">Jurusan</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <h1>Selamat Datang di SMK Pintar</h1>
+      <p>Membentuk Generasi Unggul, Berkarakter, dan Berprestasi</p>
+    </section>
+
+    <section id="about">
+      <h2>Tentang Kami</h2>
+      <p class="section-subtitle">Mengenal SMK Pintar lebih dekat</p>
+      <div class="about-content">
+        <div class="about-image">
+          <img
+            src="https://file.data.kemendikdasmen.go.id/sekolahkita/69/6977/69774832-5.jpg"
+          />
+        </div>
+        <div class="about-text">
+          <p>
+            SMK Pintar adalah institusi pendidikan yang berkomitmen untuk
+            membentuk generasi muda yang unggul, berkarakter, dan berprestasi.
+          </p>
+          <p>
+            Kami menyediakan fasilitas dan tenaga pengajar berkualitas yang siap
+            membimbing siswa-siswi mencapai potensi terbaiknya. Kurikulum kami
+            dirancang untuk mengembangkan tidak hanya kemampuan akademis, tetapi
+            juga soft skills dan karakter yang kuat.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs" id="programs">
+      <h2>Jurusan</h2>
+      <p class="section-subtitle">
+        Jurusan yang berkualitas untuk mendukung prestasi siswa
+      </p>
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-icon">🖥️</div>
+          <h3>Teknik Jaringan Komputer</h3>
+          <p>
+            jurusan di bidang Teknologi Informasi dan Komunikasi yang
+            mempelajari tentang perakitan, instalasi, dan perbaikan komputer
+            serta jaringannya, seperti LAN dan wireless.
+          </p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">💉</div>
+          <h3>Layanan Kesehatan</h3>
+          <p>
+            Jurusan bidang pendidikan yang bertujuan untuk menciptakan tenaga
+            profesional yang mampu melakukan upaya pemeliharaan, peningkatan,
+            pencegahan, dan penyembuhan penyakit, baik untuk individu maupun
+            masyarakat
+          </p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">💵</div>
+          <h3>Akutansi</h3>
+          <p>
+            Jurusan yang membekali siswa dengan pengetahuan dan keterampilan
+            dalam proses pengukuran, pemrosesan, dan pengkomunikasian informasi
+            keuangan suatu entitas.
+          </p>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🏨</div>
+          <h3>Perhotelan</h3>
+          <p>
+            Jurusan yang membekali siswa dengan keterampilan dan pengetahuan
+            untuk mengelola dan menjalankan bisnis hotel, termasuk manajemen
+            operasional, pelayanan tamu, tata boga, dan administrasi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Hubungi Kami</h2>
+      <p class="section-subtitle">Kami siap menjawab pertanyaan Anda</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Alamat</h4>
+              <p>Jl. Pintar 123 ,Jawa Utara</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Telepon</h4>
+              <p>+62 1234-5678</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>smkpintar.sch.id</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <h4>Jam Operasional</h4>
+              <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="return handleSubmit(event)">
+          <input type="text" placeholder="Nama Lengkap" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="No. Telepon" required />
+          <textarea placeholder="Pesan Anda" required></textarea>
+          <button type="submit" class="submit-btn">Kirim Pesan</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        2025 SMK Pintar. All Rights Reserved. <br />Berkarya untuk Masa Depan
+        Bangsa
+      </p>
+    </footer>
+
+    <script>
+      function handleSubmit(e) {
+        e.preventDefault();
+        alert(
+          "Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda."
+        );
+        e.target.reset();
+        return false;
+      }
+    </script>
+  </body>
+</html>
